@@ -1,5 +1,3 @@
-/* Toggle Style Switcher */
-
 const styleSwitcherToggle = document.querySelector('.style-switcher-toggler');
 styleSwitcherToggle.addEventListener('click', () => { document.querySelector('.style-switcher').classList.toggle('open'); })
 
@@ -27,9 +25,10 @@ window.addEventListener('load', () => {
 
 /* Typing Animation */
 
-var typed = new Typed('.typing', { strings: ["", " Video Editor", "Content Writer", "Graphic Designer", "Youtuber"], typeSpeed: 100, Backspeed: 60, loop: true })
+// var typed = new Typed('.typing', { strings: ["", " Video Editor", "Content Writer", "Graphic Designer", "Youtuber"], typeSpeed: 100, Backspeed: 60, loop: true })
 
 /* Changing Aside Active Link */
+console.log('hello');
 
 const nav = document.querySelector('.nav');
 const navList = nav.querySelectorAll('li');

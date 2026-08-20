@@ -30,6 +30,8 @@ window.addEventListener('load', () => {
 /* Changing Aside Active Link */
 console.log('hello');
 
+let toastTimer;
+
 const nav = document.querySelector('.nav');
 const navList = nav.querySelectorAll('li');
 const totalNavList = navList.length;
@@ -40,6 +42,7 @@ for(let i = 0; i < totalNavList; i++) {
     const a = navList[i].querySelector('a');
     a.addEventListener('click', function(event){
             event.preventDefault();
+            hideToast();
             removeBackSection();
             for(let j = 0; j < totalNavList; j++) { 
                 if(navList[j].querySelector('a').classList.contains('active')) { addBackSection(j);/*allSection[j].classList.add('back-section');*/ }
@@ -231,12 +234,18 @@ function showToast(message) {
 
     if (!toast || !toastMessage) return;
 
+    clearTimeout(toastTimer);
     toastMessage.textContent = message;
     toast.classList.add('show');
 
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 4000);
+    toastTimer = setTimeout(hideToast, 4000);
+}
+
+function hideToast() {
+    const toast = document.getElementById('toast');
+
+    clearTimeout(toastTimer);
+    if (toast) toast.classList.remove('show');
 }
 // function sendEmail() {
 // let message = document.getElementById("message").value;

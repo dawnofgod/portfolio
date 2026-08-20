@@ -67,6 +67,7 @@ function showSection(element){
     const target = element.getAttribute("href").split("#")[1];
     document.documentElement.removeAttribute('data-route');
     document.querySelector('#' + target).classList.add('active');
+    if (target === 'portfolio' && window.resetReviews) window.resetReviews();
 }
 
 function updateUrl(element){
@@ -169,10 +170,16 @@ if (reviewsTrack && reviewCards.length && reviewDots && reviewPrev && reviewNext
         startReviewTimer();
     }
 
+    window.resetReviews = function() {
+        showReview(0);
+        resetReviewTimer();
+    };
+
     reviewPrev.addEventListener('click', () => { showReview(currentReview - 1); resetReviewTimer(); });
     reviewNext.addEventListener('click', () => { showReview(currentReview + 1); resetReviewTimer(); });
     reviewsTrack.addEventListener('mouseenter', () => clearInterval(reviewTimer));
     reviewsTrack.addEventListener('mouseleave', startReviewTimer);
+    showReview(0);
     startReviewTimer();
 }
 

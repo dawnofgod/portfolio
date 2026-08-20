@@ -67,7 +67,7 @@ function showSection(element){
 
 function updateUrl(element){
     const target = element.getAttribute('href').split('#')[1];
-    window.history.pushState({}, '', target === 'home' ? '/' : '/' + target);
+    window.history.pushState({}, '', target === 'home' ? '/' : '/?page=' + target);
 }
 
 function updateNav(element){
@@ -80,7 +80,8 @@ function updateNav(element){
 }
 
 function showSectionFromUrl(){
-    const target = window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
+    const pathTarget = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    const target = new URLSearchParams(window.location.search).get('page') || pathTarget || 'home';
     const targetLink = Array.from(navList)
         .map((item) => item.querySelector('a'))
         .find((link) => link.getAttribute('href') === '#' + target);

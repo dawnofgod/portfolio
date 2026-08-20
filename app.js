@@ -126,6 +126,48 @@ function asideSectionTogglerBtn(){
     for(let i = 0; i < totalSection; i++) { allSection[i].classList.toggle('open'); }
 }
 
+const reviewsTrack = document.querySelector('.reviews-track');
+const reviewCards = document.querySelectorAll('.review-card');
+const reviewDots = document.querySelector('.review-dots');
+const reviewPrev = document.querySelector('.review-prev');
+const reviewNext = document.querySelector('.review-next');
+let currentReview = 0;
+let reviewTimer;
+
+if (reviewsTrack && reviewCards.length && reviewDots && reviewPrev && reviewNext) {
+    reviewCards.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'review-dot' + (index === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Show review ' + (index + 1));
+        dot.addEventListener('click', () => showReview(index));
+        reviewDots.appendChild(dot);
+    });
+
+    function showReview(index) {
+        currentReview = (index + reviewCards.length) % reviewCards.length;
+        reviewsTrack.style.transform = 'translateX(-' + (currentReview * 100) + '%)';
+        reviewDots.querySelectorAll('.review-dot').forEach((dot, dotIndex) => {
+            dot.classList.toggle('active', dotIndex === currentReview);
+        });
+    }
+
+    function startReviewTimer() {
+        reviewTimer = setInterval(() => showReview(currentReview + 1), 5000);
+    }
+
+    function resetReviewTimer() {
+        clearInterval(reviewTimer);
+        startReviewTimer();
+    }
+
+    reviewPrev.addEventListener('click', () => { showReview(currentReview - 1); resetReviewTimer(); });
+    reviewNext.addEventListener('click', () => { showReview(currentReview + 1); resetReviewTimer(); });
+    reviewsTrack.addEventListener('mouseenter', () => clearInterval(reviewTimer));
+    reviewsTrack.addEventListener('mouseleave', startReviewTimer);
+    startReviewTimer();
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');

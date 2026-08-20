@@ -38,7 +38,8 @@ const totalSection = allSection.length;
 
 for(let i = 0; i < totalNavList; i++) {
     const a = navList[i].querySelector('a');
-    a.addEventListener('click', function(){
+    a.addEventListener('click', function(event){
+            event.preventDefault();
             removeBackSection();
             for(let j = 0; j < totalNavList; j++) { 
                 if(navList[j].querySelector('a').classList.contains('active')) { addBackSection(j);/*allSection[j].classList.add('back-section');*/ }
@@ -63,6 +64,11 @@ function showSection(element){
     document.querySelector('#' + target).classList.add('active');
 }
 
+function updateUrl(element){
+    const target = element.getAttribute('href').split('#')[1];
+    window.history.pushState({}, '', target === 'home' ? '/' : '/' + target);
+}
+
 function updateNav(element){
     for(let i = 0; i < totalNavList; i++){
         navList[i].querySelector('a').classList.remove('active');
@@ -72,11 +78,13 @@ function updateNav(element){
     }
 }
 
-document.querySelector('.hire-me').addEventListener('click', function(){
+document.querySelector('.hire-me').addEventListener('click', function(event){
+    event.preventDefault();
     const sectionIndex = this.getAttribute('data-section-index');
     /*console.log(sectionIndex);*/
     showSection(this);
     updateNav(this);
+    updateUrl(this);
     removeBackSection();
     addBackSection(sectionIndex);
 })
@@ -85,6 +93,7 @@ document.querySelector('.home-info .btn').addEventListener('click', function(eve
     event.preventDefault();
     showSection(this);
     updateNav(this);
+    updateUrl(this);
     removeBackSection();
     addBackSection(0);
 })

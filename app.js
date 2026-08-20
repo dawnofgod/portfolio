@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
 /* Typing Animation */
 
 const typingElement = document.querySelector('.typing');
-const typingRoles = ['Digital marketer', 'video editor', 'graphic designer', 'Website designer'];
+const typingRoles = ['Digital Marketer', 'Video Editor', 'Graphic Designer', 'Website Designer'];
 let typingRoleIndex = 0;
 let typingCharacterIndex = 0;
 let isDeletingRole = false;

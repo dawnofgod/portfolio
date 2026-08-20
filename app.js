@@ -79,6 +79,20 @@ function updateNav(element){
     }
 }
 
+function showSectionFromUrl(){
+    const target = window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
+    const targetLink = Array.from(navList)
+        .map((item) => item.querySelector('a'))
+        .find((link) => link.getAttribute('href') === '#' + target);
+
+    if (!targetLink) return;
+
+    showSection(targetLink);
+    updateNav(targetLink);
+}
+
+showSectionFromUrl();
+
 document.querySelector('.hire-me').addEventListener('click', function(event){
     event.preventDefault();
     const sectionIndex = this.getAttribute('data-section-index');

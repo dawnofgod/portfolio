@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arun Poudel</title>
+</head>
+<body>
+    <script>
+        fetch('/index.html')
+            .then((response) => {
+                if (!response.ok) throw new Error('Unable to load site');
+                return response.text();
+            })
+            .then((html) => {
+                document.open();
+                document.write(html);
+                document.close();
+            })
+            .catch(() => { window.location.href = '/'; });
+    </script>
+</body>
+</html>

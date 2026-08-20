@@ -46,6 +46,11 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
             0% { transform: translateX(100%); }
             100% { transform: translateX(0%); }
         }
+html[data-route] .section.active { z-index: 0; opacity: 0; animation: none; }
+html[data-route="about"] #about,
+html[data-route="services"] #services,
+html[data-route="portfolio"] #portfolio,
+html[data-route="contact"] #contact { z-index: 2; opacity: 1; }
 .hidden { display: none !important; }
 /*.main-content { padding-left: 270px; }*/
 .padd-15 { padding-left: 15px; padding-right: 15px; }

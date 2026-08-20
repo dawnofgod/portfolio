@@ -25,7 +25,42 @@ window.addEventListener('load', () => {
 
 /* Typing Animation */
 
-// var typed = new Typed('.typing', { strings: ["", " Video Editor", "Content Writer", "Graphic Designer", "Youtuber"], typeSpeed: 100, Backspeed: 60, loop: true })
+const typingElement = document.querySelector('.typing');
+const typingRoles = ['Digital marketer', 'video editor', 'graphic designer', 'Website designer'];
+let typingRoleIndex = 0;
+let typingCharacterIndex = 0;
+let isDeletingRole = false;
+
+function typeRole() {
+    if (!typingElement) return;
+
+    const role = typingRoles[typingRoleIndex];
+    typingElement.textContent = role.slice(0, typingCharacterIndex);
+
+    if (!isDeletingRole && typingCharacterIndex < role.length) {
+        typingCharacterIndex += 1;
+        setTimeout(typeRole, 90);
+        return;
+    }
+
+    if (!isDeletingRole) {
+        isDeletingRole = true;
+        setTimeout(typeRole, 1400);
+        return;
+    }
+
+    if (typingCharacterIndex > 0) {
+        typingCharacterIndex -= 1;
+        setTimeout(typeRole, 55);
+        return;
+    }
+
+    isDeletingRole = false;
+    typingRoleIndex = (typingRoleIndex + 1) % typingRoles.length;
+    setTimeout(typeRole, 300);
+}
+
+typeRole();
 
 /* Changing Aside Active Link */
 console.log('hello');

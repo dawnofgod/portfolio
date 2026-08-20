@@ -183,7 +183,7 @@ html[data-route="contact"] #contact { z-index: 2; opacity: 1; }
         h3.hello { font-size: 28px; margin: 15px 0; }
             h3.hello span { font-family: 'Clicker Script', cursive; font-size: 30px; font-weight: 700; color: var(--skin-color); }
         h3.profession { font-size: 30px; margin: 15px 0; }
-            .typing { color: var(--skin-color); }
+            .typing { display: inline-block; min-width: 17ch; color: var(--skin-color); }
         .home-info p { margin-bottom: 70px; font-size: 20px; color: var(--text-black700); }
     .home .home-img { flex: 0 0 40%; max-width: 40%; text-align: center; position: relative; }
         .home-img::after {

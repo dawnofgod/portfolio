@@ -276,9 +276,9 @@ html[data-route="contact"] #contact { z-index: 2; opacity: 1; }
         .reviews-heading h2::after { content: ''; display: block; width: 60px; height: 4px; margin: 8px auto 0; background: var(--skin-color); }
     .reviews-heading a { display: block; margin-top: 10px; color: var(--skin-color); font-size: 13px; }
 .reviews-carousel { display: flex; align-items: center; gap: 12px; max-width: 900px; margin: 0 auto; }
-.reviews-viewport { flex: 1; overflow: hidden; border-radius: 8px; }
+.reviews-viewport { flex: 1; max-width: 520px; margin: 0 auto; overflow: hidden; border-radius: 8px; }
 .reviews-track { display: flex; transition: transform .55s ease; }
-.review-card { flex: 0 0 100%; min-height: 185px; padding: 22px; background: var(--bg-black100); border-radius: 8px; box-shadow: 0 0 18px rgba(48, 46, 77, .12); }
+.review-card { display: flex; flex: 0 0 100%; aspect-ratio: 1 / 1; flex-direction: column; justify-content: center; padding: 22px; background: var(--bg-black100); border-radius: 8px; box-shadow: 0 0 18px rgba(48, 46, 77, .12); }
 .review-card-top { display: flex; align-items: center; gap: 12px; }
     .review-card-top h3 { color: var(--text-black900); font-size: 14px; }
     .review-card-top time { color: var(--text-black700); font-size: 11px; }

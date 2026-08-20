@@ -65,6 +65,7 @@ function showSection(element){
     for( let i = 0; i < totalSection; i++){ allSection[i].classList.remove('active'); }
 
     const target = element.getAttribute("href").split("#")[1];
+    document.documentElement.removeAttribute('data-route');
     document.querySelector('#' + target).classList.add('active');
 }
 

@@ -253,16 +253,18 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
 .portfolio .container { padding-bottom: 40px; }
 .portfolio .portfolio-heading { flex: 0 0 100%; max-width: 100%; margin-bottom: 40px; }
     .portfolio .portfolio-heading h2 { color: var(--text-black900); font-weight: 500; }
-.portfolio .portfolio-item { flex: 0 0 33.33%; max-width: 33.33%; margin-bottom: 30px; }
-.portfolio .portfolio-item-inner { border: 6px solid var(--bg-black100); border-radius: 10px; overflow: hidden; cursor: pointer; }
+.portfolio .row:last-child { align-items: stretch; }
+.portfolio .portfolio-item { display: flex; flex: 0 0 33.33%; max-width: 33.33%; margin-bottom: 30px; }
+.portfolio .portfolio-item-inner { display: flex; flex-direction: column; width: 100%; border: 6px solid var(--bg-black100); border-radius: 10px; overflow: hidden; cursor: pointer; }
     .portfolio .portfolio-item-inner a { display: block; color: inherit; }
     .portfolio .portfolio-item-inner .portfolio-img img { width: 100%; display: block; }
-    .portfolio .portfolio-item-inner .portfolio-info { padding: 15px; background: var(--bg-black100); }
+    .portfolio .portfolio-item-inner .portfolio-info { display: flex; flex: 1; flex-direction: column; padding: 15px; background: var(--bg-black100); }
         .portfolio .portfolio-item-inner .portfolio-title { font-size: 16px; font-weight: 600; color: var(--text-black900); text-align: center; }
         .portfolio .portfolio-item-inner .portfolio-description { margin: 12px 0 18px; color: var(--text-black700); font-size: 13px; line-height: 1.7; }
         .portfolio .portfolio-item-inner .portfolio-service { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 14px; color: var(--text-black900); font-size: 13px; font-weight: 600; text-align: center; }
             .portfolio .portfolio-item-inner .portfolio-service i { font-size: 22px; }
-        .portfolio .portfolio-item-inner .portfolio-cta { width: fit-content; margin: 0 auto; padding: 6px 18px; background: var(--skin-color); color: #FFF; font-size: 12px; font-weight: 600; text-align: center; border-radius: 3px; }
+        .portfolio .portfolio-item-inner .portfolio-cta { width: fit-content; margin: auto auto 0; padding: 6px 18px; background: var(--skin-color); color: #FFF; font-size: 12px; font-weight: 600; text-align: center; border-radius: 3px; transition: background-color .3s ease, color .3s ease; }
+            .portfolio .portfolio-item-inner .portfolio-cta:hover { background: #808080; color: #FFF; }
 
 /* CONTACT */
 

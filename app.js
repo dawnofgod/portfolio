@@ -81,6 +81,14 @@ document.querySelector('.hire-me').addEventListener('click', function(){
     addBackSection(sectionIndex);
 })
 
+document.querySelector('.home-info .btn').addEventListener('click', function(event){
+    event.preventDefault();
+    showSection(this);
+    updateNav(this);
+    removeBackSection();
+    addBackSection(0);
+})
+
 /* Activating Mobile Menu */
 
 const navTogglerBtn = document.querySelector('.nav-toggler');

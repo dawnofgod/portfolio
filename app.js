@@ -70,6 +70,10 @@ function showSection(element){
 
 function updateUrl(element){
     const target = element.getAttribute('href').split('#')[1];
+    if (window.location.protocol === 'file:') {
+        window.history.pushState({}, '', target === 'home' ? window.location.pathname : '#' + target);
+        return;
+    }
     window.history.pushState({}, '', target === 'home' ? '/' : '/' + target);
 }
 
@@ -83,7 +87,7 @@ function updateNav(element){
 }
 
 function showSectionFromUrl(){
-    const target = window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
+    const target = window.location.hash.replace(/^#/, '') || window.location.pathname.replace(/^\/+|\/+$/g, '') || 'home';
     const targetLink = Array.from(navList)
         .map((item) => item.querySelector('a'))
         .find((link) => link.getAttribute('href') === '#' + target);
